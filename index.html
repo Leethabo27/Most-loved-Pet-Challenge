@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Most-Loved Pet Challenge</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        background-color: #ffafe3;
+      }
+      header {
+        text-align: center;
+        padding: 50px;
+        background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/152/814/original/R_%281%29.jpeg?1734201728")
+          no-repeat center center/cover;
+        color: rgb(255, 8, 156);
+      }
+      header h1 {
+        font-size: 3rem;
+        margin: 0;
+      }
+      header p {
+        font-size: 1.5rem;
+        margin: 10px 0;
+      }
+      .button {
+        background: #fa0494;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .button:hover {
+        background: #f863ad;
+      }
+      section {
+        padding: 50px;
+        text-align: center;
+      }
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+      .image-grid img {
+        width: 100%;
+        border-radius: 10px;
+      }
+      .fun-facts {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .fact-card {
+        background: #e90b85;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        width: 200px;
+        color: rgb(250, 244, 247);
+      }
+      .fact-card:hover {
+        transform: scale(1.05);
+        transition: 0.3s;
+      }
+      footer {
+        background: #ff058a;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .like-counter {
+        margin: 20px 0;
+        font-size: 1.2rem;
+        color: #100f10;
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 2.5rem;
+        }
+        header p {
+          font-size: 1.2rem;
+        }
+        .fact-card {
+          width: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Meet Bella: The Most-Loved Pet Ever!</h1>
+      <p>Bringing joy, laughter, and unconditional love every day!</p>
+      <button class="button" id="pawButton">Paw Party! 🐾</button>
+    </header>
+
+    <section id="about">
+      <h2>About Bella</h2>
+      <p>
+        Bella is a 5-year-old Golden Retriever who loves peanut butter and long
+        walks.
+      </p>
+      <div class="image-grid">
+        <img
+          src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/152/815/original/imha-annie_hero.png?1734201775"
+          alt="Bella playing"
+        />
+        <img
+          src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/152/816/original/R.jpeg?1734201804"
+          alt="Bella sleeping"
+        />
+        <img
+          src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/152/819/original/572301363-adabd7b5067daddd62831d1300a85614cad5a9fe436f8d99260808d765e4aa3b-d.jpg?1734202413"
+          alt="Bella smiling"
+        />
+      </div>
+    </section>
+
+    <section>
+      <h2>Fun Facts</h2>
+      <div class="fun-facts">
+        <div class="fact-card">🐾 Favorite Snack: Peanut Butter</div>
+        <div class="fact-card">🎾 Loves to Chase Tennis Balls</div>
+        <div class="fact-card">🌊 Enjoys Swimming in the Lake</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why I Love Bella</h2>
+      <p>
+        Bella always knows how to cheer me up with her goofy personality and
+        warm cuddles.
+      </p>
+      <button class="button" id="likeButton">Like ❤️</button>
+      <div class="like-counter" id="likeCounter">Likes: 0</div>
+    </section>
+
+    <footer>
+      <p>Celebrate your furry friend and join the Most-Loved Pet Challenge!</p>
+      <br />
+      <p>Coded 👩‍💻 by Lethabo Semenya</p>
+    </footer>
+    <script>
+      const pawButton = document.getElementById("pawButton");
+      const body = document.body;
+
+      pawButton.addEventListener("click", () => {
+        for (let i = 0; i < 10; i++) {
+          const paw = document.createElement("div");
+          paw.textContent = "🐾";
+          paw.style.position = "absolute";
+          paw.style.left = `${Math.random() * 100}vw`;
+          paw.style.top = `${Math.random() * 100}vh`;
+          paw.style.fontSize = `${Math.random() * 30 + 20}px`;
+          paw.style.animation = "fadeOut 3s ease-out forwards";
+          body.appendChild(paw);
+
+          setTimeout(() => paw.remove(), 3000);
+        }
+      });
+
+      const style = document.createElement("style");
+      style.textContent = `
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+`;
+      document.head.appendChild(style);
+
+      const likeButton = document.getElementById("likeButton");
+      const likeCounter = document.getElementById("likeCounter");
+      let likes = 0;
+
+      likeButton.addEventListener("click", () => {
+        likes++;
+        likeCounter.textContent = `Likes: ${likes}`;
+      });
+    </script>
+  </body>
+</html>
